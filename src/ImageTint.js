@@ -79,20 +79,16 @@ class ImageTint extends React.Component {
   }
 
   // Returns the new canvas
-  getCanvas = () => new p5(this.renderSketch, this.wrapper)
-
-  wrapper = props => {
-    const { canvas, src, tint, ...rest } = props
-
-    return (
-      <div id="react-p5" ref={wrapper => (this.wrapper = wrapper)} {...rest} />
-    )
-  }
+  getCanvas = () => new p5(this.renderSketch, this.wrapper).canvas
 
   componentDidMount = () => this.getCanvas()
 
   render() {
-    return this.wrapper(this.props)
+    const { canvas, src, tint, ...rest } = this.props
+
+    return (
+      <div ref={wrapper => (this.wrapper = wrapper)} {...rest} />
+    )
   }
 }
 
