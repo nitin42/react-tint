@@ -12,14 +12,14 @@ class ImageTint extends React.Component {
     canvas: PropTypes.shape({
       height: PropTypes.number,
       width: PropTypes.number,
-      renderer: PropTypes.string,
+      renderer: PropTypes.string
     }),
     tint: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.number),
       PropTypes.string,
       PropTypes.objectOf(PropTypes.number)
     ]),
-    src: PropTypes.string,
+    src: PropTypes.string
   }
 
   // Render the sketch and return a new canvas displaying the edited image
@@ -45,9 +45,12 @@ class ImageTint extends React.Component {
   // Apply the various types of values feeded to 'tint' prop
   applyTintValues = (processing, tint) => {
     if (Array.isArray(tint)) {
-      const [a,b,c,d] = tint
-      return processing.tint(a,b,c,d)
-    } else if (typeof tint === 'object' && ('color' in tint || 'alpha' in tint)) {
+      const [a, b, c, d] = tint
+      return processing.tint(a, b, c, d)
+    } else if (
+      typeof tint === 'object' &&
+      ('color' in tint || 'alpha' in tint)
+    ) {
       return processing.tint(tint.color, tint.alpha)
     } else if (typeof tint === 'string') {
       return processing.tint(tint)
@@ -55,11 +58,18 @@ class ImageTint extends React.Component {
   }
 
   // Processing core
-  renderImage = (processing, dispatch, tint, src, { height, width, renderer }) => {
+  renderImage = (
+    processing,
+    dispatch,
+    tint,
+    src,
+    { height, width, renderer }
+  ) => {
     let img
 
     // Choose renderer type
-    getRendererType = (name) => name === 'WEBGL' ? processing.WEBGL : processing.P2D
+    getRendererType = name =>
+      name === 'WEBGL' ? processing.WEBGL : processing.P2D
 
     // Load the image from the src (Called once)
     preload = () => {
@@ -86,9 +96,7 @@ class ImageTint extends React.Component {
   render() {
     const { canvas, src, tint, ...rest } = this.props
 
-    return (
-      <div ref={wrapper => (this.wrapper = wrapper)} {...rest} />
-    )
+    return <div ref={wrapper => (this.wrapper = wrapper)} {...rest} />
   }
 }
 
