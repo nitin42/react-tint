@@ -1,15 +1,19 @@
 {
   "name": "react-tint",
   "version": "1.0.0",
-  "description": "A React component that applies image processing filter to an image using Processing",
-  "main": "index.js",
+  "description": "A React component that applies image processing filters to an image using Processing",
+  "main": "./build/react-tint.min.js",
   "author": "Nitin Tulswani",
   "license": "MIT",
-  "private": false,
+  "files": [
+    "build",
+    "src"
+  ],
   "dependencies": {
-    "p5": "^0.5.16",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "p5": "^0.5.16"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -25,6 +29,6 @@
   },
   "scripts": {
     "start": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --port 3000 --content-base ./public --hot --config ./webpack/webpack.config.dev.js",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack/webpack.config.prod.js"
+    "build": "rm -rf build && NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack/webpack.config.prod.js"
   }
 }
