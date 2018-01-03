@@ -1,6 +1,6 @@
 {
   "name": "react-tint",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A React component that applies image processing filters to an image using Processing",
   "main": "./build/react-tint.min.js",
   "author": "Nitin Tulswani",
