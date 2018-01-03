@@ -17,7 +17,7 @@ class ImageTint extends React.Component {
     tint: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.number),
       PropTypes.string,
-      PropTypes.objectOf(PropTypes.number)
+      PropTypes.object
     ]),
     src: PropTypes.string
   }
@@ -76,20 +76,24 @@ class ImageTint extends React.Component {
       img = processing.loadImage(src)
     }
 
-    // Called once
+    // Called once when the image is loaded
     setup = () => {
       processing.createCanvas(width, height, getRendererType(renderer))
       processing.image(img, 0, 0)
+    }
+
+    // Draw the image (apply the filters)
+    draw = () => {
       this.applyTintValues(processing, tint)
       processing.image(img, 0, 0)
     }
 
-    // Start Processing
-    dispatch([preload, setup])
+    // Start Processing (dispatch all the processing functions)
+    dispatch([preload, setup, draw])
   }
 
   // Returns the new canvas
-  getCanvas = () => new p5(this.renderSketch, this.wrapper).canvas
+  getCanvas = () => new p5(this.renderSketch, this.wrapper)
 
   componentDidMount = () => this.getCanvas()
 
