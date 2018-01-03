@@ -1,6 +1,6 @@
 # react-tint
 
-![size-label](https://img.shields.io/badge/size-4.5%20KB-brightgreen.svg)
+![size-label](https://img.shields.io/badge/size-4.3%20KB-brightgreen.svg)
 
 > A React component that applies image processing filters to an image using Processing
 
