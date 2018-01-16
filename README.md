@@ -56,6 +56,8 @@ Example -
 
 Two types of renderers are supported, **WEBGL** and **P2D**.
 
+The P2D renderer uses OpenGL for faster rendering of two-dimensional graphics but at the expense of speed.
+
 * **`tint`**
 
 `tint` takes different types of data for an image. It can take a simple **string of color name**, **array of values** that includes Red, Green, Blue and alpha value for image transparency and **an object that describes color and alpha channel**.
